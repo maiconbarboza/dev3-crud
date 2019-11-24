@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Tempo de geração: 13/11/2019 às 02:44
--- Versão do servidor: 10.3.16-MariaDB
--- Versão do PHP: 7.3.7
+-- Host: 127.0.0.1
+-- Tempo de geração: 24-Nov-2019 às 02:53
+-- Versão do servidor: 10.4.8-MariaDB
+-- versão do PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -22,38 +22,43 @@ SET time_zone = "+00:00";
 -- Banco de dados: `lar_sao_vicente`
 --
 
+CREATE DATABASE `lar_sao_vicente`;
+
+USE `lar_sao_vicente`;
+
+DROP TABLE IF EXISTS `usuarios`;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nome` varchar(100) COLLATE latin1_general_cs NOT NULL,
-  `telefone` varchar(13) COLLATE latin1_general_cs NOT NULL,
+  `senha` varchar(10) COLLATE latin1_general_cs NOT NULL,
+  `telefone` varchar(12) COLLATE latin1_general_cs NOT NULL,
   `email` varchar(100) COLLATE latin1_general_cs NOT NULL,
   `endereco` varchar(100) COLLATE latin1_general_cs NOT NULL,
-  `cpf` varchar(15) COLLATE latin1_general_cs NOT NULL,
-  `cnpj` varchar(16) COLLATE latin1_general_cs DEFAULT NULL,
-  `razao_social` varchar(100) COLLATE latin1_general_cs DEFAULT NULL
+  `cpf` varchar(14) COLLATE latin1_general_cs NOT NULL,
+  `cnpj` varchar(16) COLLATE latin1_general_cs NOT NULL,
+  `razao_social` varchar(100) COLLATE latin1_general_cs NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs;
 
 --
--- Despejando dados para a tabela `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `telefone`, `email`, `endereco`, `cpf`, `cnpj`, `razao_social`) VALUES
-(3, 'Maicon', '991052271', 'maicon@maicon.com', 'rua alexandre', '111.111.111-11', '2', ''),
-(4, 'teste', '9910011222', 'teste@teste', 'Rua ji', '2222', '', ''),
-(5, 'Maicon Barboza', '12345', 'maicon@bar', 'Rua Max', '111111', '', 'sadsad');
+INSERT INTO `usuarios` (`id`, `nome`, `senha`, `telefone`, `email`, `endereco`, `cpf`, `cnpj`, `razao_social`) VALUES
+(3, 'Maicon', '81dc9bdb52', '991052271', 'maicon@maico', 'rua alexandre', '111.111.111-11', '', ''),
+(4, 'Ariovaldo', '81dc9bdb52', '998704321', 'ariovaldo@gmail.com', 'Rua das arueiras', '222.222.222-22', '', '');
 
 --
--- Índices de tabelas apagadas
+-- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `usuarios`
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
@@ -61,14 +66,14 @@ ALTER TABLE `usuarios`
 ALTER TABLE `usuarios` ADD FULLTEXT KEY `nome_usuarios` (`nome`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
