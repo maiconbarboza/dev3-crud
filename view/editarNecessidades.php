@@ -17,6 +17,7 @@
                     <input type="hidden" name="id" value="<?php
                     // Preenche o id no campo id com um valor "value"
                     echo (isset($id) && ($id != null || $id != "")) ? $id : '';
+					//echo "O id eh".$id;
 
                     ?>" />
                     <div class="form-group row">

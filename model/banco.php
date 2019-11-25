@@ -60,7 +60,6 @@ class Banco{
             $array[] = $row;
         }
         return $array;
-
     }
 	
     public function deleteUsuario($id){
@@ -111,8 +110,8 @@ class Banco{
 	
 	public function updateNecessidades($nome,$tipo,$prioridade,$id){
         try {
-            $stmt = $this->mysqli->prepare("UPDATE usuarios SET `nome` = ?, `tipo` = ?,`prioridade`=?  WHERE `id` = ?");
-            $stmt->bind_param("ssss",$nome,$tipo,$prioridade,$id);
+            $stmt = $this->mysqli->prepare("UPDATE necessidades SET `nome` = ?, `tipo` = ?,`prioridade`=?  WHERE `id` = ?");
+            $stmt->bind_param("sssi",$nome,$tipo,$prioridade,$id);
             if($stmt->execute()==TRUE){
                 return true;
             }else{
