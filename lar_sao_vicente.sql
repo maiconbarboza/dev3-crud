@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Nov-2019 às 02:53
+-- Tempo de geração: 25-Nov-2019 às 01:34
 -- Versão do servidor: 10.4.8-MariaDB
 -- versão do PHP: 7.3.11
 
@@ -21,12 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `lar_sao_vicente`
 --
-
 CREATE DATABASE `lar_sao_vicente`;
 
 USE `lar_sao_vicente`;
 
 DROP TABLE IF EXISTS `usuarios`;
+
+DROP TABLE IF EXISTS `necessidades`;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `necessidades`
+--
+
+CREATE TABLE `necessidades` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `tipo` int(3) UNSIGNED NOT NULL,
+  `nome` varchar(255) COLLATE latin1_general_cs NOT NULL,
+  `prioridade` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs;
+
 -- --------------------------------------------------------
 
 --
@@ -58,6 +73,12 @@ INSERT INTO `usuarios` (`id`, `nome`, `senha`, `telefone`, `email`, `endereco`, 
 --
 
 --
+-- Índices para tabela `necessidades`
+--
+ALTER TABLE `necessidades`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -68,6 +89,12 @@ ALTER TABLE `usuarios` ADD FULLTEXT KEY `nome_usuarios` (`nome`);
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `necessidades`
+--
+ALTER TABLE `necessidades`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
